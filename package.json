@@ -1,0 +1,30 @@
+{
+  "name": "generator-react-starter-kit",
+  "version": "1.0.0",
+  "description": "This is a starter kit og react using yeoman generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nchathu2014/generator-react-starter-kit.git"
+  },
+  "keywords": [
+    "React",
+    "Redux",
+    "Yeoman",
+    "Generator"
+  ],
+  "author": "Nuwan Chathuranga T.D",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nchathu2014/generator-react-starter-kit/issues"
+  },
+  "homepage": "https://github.com/nchathu2014/generator-react-starter-kit#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "yeoman-generator": "^1.1.0",
+    "yosay": "^1.2.1"
+  }
+}
