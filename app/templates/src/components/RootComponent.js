@@ -1,7 +1,10 @@
 import React,{Component,PropTypes} from "react";
+<% if(apptype != "Pure ReactJS"){ %>
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as testActions from '../redux/actions/testActions';
+<% } %>
+
 import Template from './templates/Template';
 
 class DynamicCanvas extends Component {
@@ -76,6 +79,8 @@ DynamicCanvas.propTypes = {
     //myProp:PropTypes.string.isRequired
 };
 
+
+<% if(apptype != "Pure ReactJS"){ %>
 function mapStateToProps(state) {
     return {
         message: state.testObj
@@ -87,5 +92,13 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(testActions, dispatch)
     };
 }
+<% } %>
 
+
+<% if(apptype != "Pure ReactJS"){ %>
 export default connect(mapStateToProps,mapDispatchToProps)(DynamicCanvas);
+<% } else{%>
+    export default DynamicCanvas;
+<% }%>
+
+

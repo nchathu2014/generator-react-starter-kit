@@ -24,6 +24,7 @@
   "homepage": "https://github.com/nchathu2014/generator-react-starter-kit#readme",
   "dependencies": {
     "chalk": "^1.1.3",
+    "lodash": "^4.17.4",
     "yeoman-generator": "^1.1.0",
     "yosay": "^1.2.1"
   }

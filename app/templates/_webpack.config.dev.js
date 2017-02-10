@@ -3,7 +3,7 @@ import path from 'path';
 
 export default {
     debug: true,
-    devtool: 'cheap-module-eval-source-map',//inline-source-map
+    devtool: 'inline-source-map',//inline-source-map
     noInfo: false,
     entry: [
         'eventsource-polyfill', // necessary for hot reloading with IE
