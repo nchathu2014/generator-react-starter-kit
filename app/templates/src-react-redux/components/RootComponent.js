@@ -1,8 +1,9 @@
 import React,{Component,PropTypes} from "react";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import * as testActions from './../actions/testActions';
 
-class RootComponent extends Component {
+class <%=appName%> extends Component {
 
     /**
      *
@@ -10,7 +11,7 @@ class RootComponent extends Component {
      */
     constructor(props) {
         super(props);
-        this._initRootComponent();
+        this._init<%=appName%>();
         this.state = {};
     }
 
@@ -18,7 +19,7 @@ class RootComponent extends Component {
      *
      * @private
      */
-    _initRootComponent() {
+    _init<%=appName%>() {
         //bind custom function here
     }
 
@@ -81,7 +82,7 @@ class RootComponent extends Component {
         return (
             <div className="content" style={{textAlign:'center'}}>
                 <h1 style={{color:'#fff'}}>
-                    Welcome to React+Redux Starter Kit
+    {this.props.message}
                 </h1>
                 <h2 style={{color:'aqua'}}>[v1.0.0]</h2>
             </div>
@@ -93,13 +94,13 @@ class RootComponent extends Component {
  *
  * @type {{}}
  */
-RootComponent.propTypes = {};
+<%=appName%>.propTypes = {};
 
 /**
  *
  * @type {{}}
  */
-RootComponent.defaultProps = {};
+<%=appName%>.defaultProps = {};
 
 /**
  *
@@ -108,7 +109,8 @@ RootComponent.defaultProps = {};
  */
 function mapStateToProps(state) {
     return {
-        state: state
+        state: state,
+        message:state.testObj
     };
 }
 
@@ -119,8 +121,8 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(actions, dispatch)
+        actions: bindActionCreators(testActions, dispatch)
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RootComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(<%=appName%>);

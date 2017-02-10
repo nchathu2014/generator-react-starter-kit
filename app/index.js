@@ -216,52 +216,67 @@ module.exports = class extends Generator{
         this._copyCommonFiles();
     }*/
 
+
+    /**
+     * COPY REACT REDUX RESOURCES
+     * @private
+     */
     _copyReactRedux(){
         var reactReduxContext = this._getReactReduxContext();
 
         this.fs.copyTpl(
-            this.templatePath(appConfig.config.path.pureReact.templatePath+'/'+reactReduxContext.indexHTML),
-            this.destinationPath(appConfig.config.path.pureReact.destinationPath+'/'+reactReduxContext.indexHTML),
+            this.templatePath(appConfig.config.path.reactRedux.templatePath+'/'+reactReduxContext.indexHTML),
+            this.destinationPath(appConfig.config.path.reactRedux.destinationPath+'/'+reactReduxContext.indexHTML),
             {
                 appName:this.appname
             }
         );
 
         this.fs.copyTpl(
-            this.templatePath(appConfig.config.path.pureReact.templatePath+'/'+reactReduxContext.indexJS),
-            this.destinationPath(appConfig.config.path.pureReact.destinationPath+'/'+reactReduxContext.indexJS),
+            this.templatePath(appConfig.config.path.reactRedux.templatePath+'/'+reactReduxContext.indexJS),
+            this.destinationPath(appConfig.config.path.reactRedux.destinationPath+'/'+reactReduxContext.indexJS),
             {
                 appName:this.appname
             }
         );
 
         this.fs.copyTpl(
-            this.templatePath(appConfig.config.path.pureReact.templatePath+'/'+reactReduxContext.components+'/'+'RootComponent.js'),
-            this.destinationPath(appConfig.config.path.pureReact.destinationPath+'/'+reactReduxContext.components+'/'+this.appname+'.js'),
+            this.templatePath(appConfig.config.path.reactRedux.templatePath+'/'+reactReduxContext.components+'/'+'RootComponent.js'),
+            this.destinationPath(appConfig.config.path.reactRedux.destinationPath+'/'+reactReduxContext.components+'/'+this.appname+'.js'),
             {
                 appName:this.appname
             }
         );
 
         this.fs.copy(
-            this.templatePath(appConfig.config.path.pureReact.templatePath+'/'+reactReduxContext.constant),
-            this.destinationPath(appConfig.config.path.pureReact.destinationPath+'/'+reactReduxContext.constant)
+            this.templatePath(appConfig.config.path.reactRedux.templatePath+'/'+reactReduxContext.constant),
+            this.destinationPath(appConfig.config.path.reactRedux.destinationPath+'/'+reactReduxContext.constant)
         );
 
 
         this.fs.copy(
-            this.templatePath(appConfig.config.path.pureReact.templatePath+'/'+reactReduxContext.action),
-            this.destinationPath(appConfig.config.path.pureReact.destinationPath+'/'+reactReduxContext.action)
+            this.templatePath(appConfig.config.path.reactRedux.templatePath+'/'+reactReduxContext.actions),
+            this.destinationPath(appConfig.config.path.reactRedux.destinationPath+'/'+reactReduxContext.actions)
         );
 
         this.fs.copy(
-            this.templatePath(appConfig.config.path.pureReact.templatePath+'/'+reactReduxContext.images),
-            this.destinationPath(appConfig.config.path.pureReact.destinationPath+'/'+reactReduxContext.images)
+            this.templatePath(appConfig.config.path.reactRedux.templatePath+'/'+reactReduxContext.store),
+            this.destinationPath(appConfig.config.path.reactRedux.destinationPath+'/'+reactReduxContext.store)
         );
 
         this.fs.copy(
-            this.templatePath(appConfig.config.path.pureReact.templatePath+'/'+reactReduxContext.styles),
-            this.destinationPath(appConfig.config.path.pureReact.destinationPath+'/'+reactReduxContext.styles)
+            this.templatePath(appConfig.config.path.reactRedux.templatePath+'/'+reactReduxContext.reducer),
+            this.destinationPath(appConfig.config.path.reactRedux.destinationPath+'/'+reactReduxContext.reducer)
+        );
+
+        this.fs.copy(
+            this.templatePath(appConfig.config.path.reactRedux.templatePath+'/'+reactReduxContext.images),
+            this.destinationPath(appConfig.config.path.reactRedux.destinationPath+'/'+reactReduxContext.images)
+        );
+
+        this.fs.copy(
+            this.templatePath(appConfig.config.path.reactRedux.templatePath+'/'+reactReduxContext.styles),
+            this.destinationPath(appConfig.config.path.reactRedux.destinationPath+'/'+reactReduxContext.styles)
         );
     }
 

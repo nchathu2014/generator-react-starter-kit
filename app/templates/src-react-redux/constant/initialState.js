@@ -1,3 +1,3 @@
 export default{
-  testObj:"I am the Redux Store"
+  testObj:"Welcome to React + Redux Starter Kit"
 }
