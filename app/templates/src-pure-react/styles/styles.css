@@ -1,25 +1,26 @@
 body{
-    background-color: #fff;
+    background-color: #f4f4f4;
     font-family: "Helvetica Neue";
 }
 
 .content {
     width: 500px;
-    height: 150px;
-    background-color: #000;
-
+    height: 280px;
+    overflow: hidden;
+    background-color: #fff;
     position:absolute; /*it can be fixed too*/
     left:0; right:0;
     top:0; bottom:0;
     margin:auto;
+    color:#000;
 
     /*this to solve "the content will not be cut when the window is smaller than the content": */
     max-width:100%;
     max-height:100%;
-    overflow:auto;
+
 
     border-radius: 10px;
-    border:2px solid aqua;
-    box-shadow: 0 0 10px aqua;
+    border:2px solid #3fc5ee;
+    box-shadow: 0 0 10px #3fc5ee;
     padding: 10px;
 }

@@ -29,40 +29,40 @@ module.exports = class extends Generator {
      * 2.Where you prompt users for options (where you'd call this.prompt())
      */
     prompting() {
-        this.log('%%%%%%%%%%%%%%%% '+this.config.get('userSelectedAppType'));
+        var choicesList = [];
+        var stateLessObj =  {
+            name: 'React State-less Component ',
+            value: appConfig.config.componentTypes.stateLess,
+            checked: true
+        };
 
-        //TODOOO:
-       // When user select pure react he should not be able to select to create react-redux component by  the list
+        var stateFullObj =  {
+            name: 'React State-full Component ',
+            value: appConfig.config.componentTypes.stateFull,
+            checked: false
+        };
+
+        var reactReduxObj =  {
+            name: 'React-Redux Component ',
+            value: appConfig.config.componentTypes.reactRedux,
+            checked: false
+        };
+
+        if(this.config.get('userSelectedAppType') === 'Pure React'){
+            choicesList = [stateLessObj,stateFullObj];
+        }else{
+            choicesList = [stateLessObj,stateFullObj,reactReduxObj];
+        }
 
         return this.prompt([
             {
                 type: 'rawlist',
                 name: 'comptype',
                 message: 'Select your React component type ?',
-                choices: [
-
-                    {
-                        name: 'React State-less Component ',
-                        value: appConfig.config.componentTypes.stateLess,
-                        checked: true
-                    },
-                    {
-                        name: 'React State-full Component ',
-                        value: appConfig.config.componentTypes.stateFull,
-                        checked: false
-                    },
-                    {
-                        name: 'React-Redux Component ',
-                        value: appConfig.config.componentTypes.reactRedux,
-                        checked: false
-                    }
-
-                ]
+                choices: choicesList
             }
         ]).then((answers)=> {
-
             this.selCompType = answers.comptype;
-            this.log(this.selCompType)
         })
 
     }
@@ -125,7 +125,7 @@ module.exports = class extends Generator {
             selComponentType = "_ReactStateLess.js"
         } else if (this.selCompType === appConfig.config.componentTypes.stateFull) {
             selComponentType = "_ReactStateFull.js"
-        } else if((this.config.get('userSelectedAppType')==='Pure ReactJS') && this.selCompType === appConfig.config.componentTypes.reactRedux){
+        } else {
             selComponentType = "_ReactRedux.js"
         }
 

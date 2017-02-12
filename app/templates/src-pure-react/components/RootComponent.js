@@ -1,91 +1,94 @@
 import React, {PropTypes,Component} from 'react';
+import logo from './../img/welcome.png';
 import './../styles/styles.css';
 
-class <%= appName%> extends Component {
+class
+<%= appName%> extends Component {
 
-    /**
-     * RootComponent constructor
-     * @param props
-     */
+/**
+ * RootComponent constructor
+ * @param props
+ */
     constructor(props) {
-        super(props);
-        this._init<%= appName%>();
-        this.state = {};
-    }
+    super(props);
+    this._init<%= appName%>();
+    this.state = {};
+}
 
-    /**
-     * Custom Function - Method binding to 'this'
-     * @private
-     */
+/**
+ * Custom Function - Method binding to 'this'
+ * @private
+ */
     _init<%= appName%>() {
-        //bind custom function here
-    }
+    //bind custom function here
+}
 
-    /**
-     * Life Cycle function - componentWillMount
-     */
+/**
+ * Life Cycle function - componentWillMount
+ */
     componentWillMount() {
-    }
+}
 
-    /**
-     * Life Cycle function - componentDidMount
-     */
+/**
+ * Life Cycle function - componentDidMount
+ */
     componentDidMount() {
-    }
+}
 
-    /**
-     * Life Cycle function - componentWillReceiveProps
-     * @param newProps
-     */
+/**
+ * Life Cycle function - componentWillReceiveProps
+ * @param newProps
+ */
     componentWillReceiveProps(newProps) {
-    }
+}
 
-    /**
-     * Life Cycle function - shouldComponentUpdate
-     * @param newProps
-     * @param newState
-     * @returns {boolean}
-     */
+/**
+ * Life Cycle function - shouldComponentUpdate
+ * @param newProps
+ * @param newState
+ * @returns {boolean}
+ */
     shouldComponentUpdate(newProps, newState) {
-        return true;
-    }
+    return true;
+}
 
-    /**
-     * Life Cycle function - componentWillUpdate
-     * @param nextProps
-     * @param nextState
-     */
+/**
+ * Life Cycle function - componentWillUpdate
+ * @param nextProps
+ * @param nextState
+ */
     componentWillUpdate(nextProps, nextState) {
-    }
+}
 
-    /**
-     * Life Cycle function - componentDidUpdate
-     * @param prevProps
-     * @param prevState
-     */
+/**
+ * Life Cycle function - componentDidUpdate
+ * @param prevProps
+ * @param prevState
+ */
     componentDidUpdate(prevProps, prevState) {
-    }
+}
 
-    /**
-     * Life Cycle function - componentWillUnmount
-     */
+/**
+ * Life Cycle function - componentWillUnmount
+ */
     componentWillUnmount() {
-    }
+}
 
-    /**
-     * Life Cycle function - render
-     * @returns {XML}
-     */
+/**
+ * Life Cycle function - render
+ * @returns {XML}
+ */
     render() {
-        return (
-            <div className="content" style={{textAlign:'center'}}>
-                <h1 style={{color:'#fff'}}>
-                    Welcome to React Starter Kit
-                </h1>
-                <h2 style={{color:'aqua'}}>[v1.0.0]</h2>
-            </div>
-        );
-    }
+    return (
+    <div className="content" style={{textAlign: 'center'}}>
+        <img src={logo} alt=""/>
+        <h1>
+            Welcome to React Starter Kit
+        </h1>
+        <h2>v1.0.0</h2>
+    </div>
+    );
+}
 }
 
 /**
@@ -100,4 +103,5 @@ class <%= appName%> extends Component {
  */
 <%= appName%>.defaultProps = {};
 
-export default <%= appName%>;
+export default
+<%= appName%>;

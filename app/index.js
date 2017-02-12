@@ -239,7 +239,7 @@ module.exports = class extends Generator {
      * Where installation are run (npm, bower)
      */
     install() {
-       // this.installDependencies();
+       //this.installDependencies();
     }
 
     /**

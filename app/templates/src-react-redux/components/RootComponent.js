@@ -2,6 +2,7 @@ import React,{Component,PropTypes} from "react";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as testActions from './../actions/testActions';
+import logo from './../img/welcome.png';
 
 class <%=appName%> extends Component {
 
@@ -80,11 +81,12 @@ class <%=appName%> extends Component {
      */
     render() {
         return (
-            <div className="content" style={{textAlign:'center'}}>
-                <h1 style={{color:'#fff'}}>
-    {this.props.message}
+            <div className="content" style={{textAlign: 'center'}}>
+                <img src={logo} alt=""/>
+                <h1>
+                    Welcome to React + Redux Starter Kit
                 </h1>
-                <h2 style={{color:'aqua'}}>[v1.0.0]</h2>
+                <h2>v1.0.0</h2>
             </div>
         );
     }
