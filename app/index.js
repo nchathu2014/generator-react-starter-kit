@@ -71,7 +71,7 @@ module.exports = class extends Generator {
             {
                 type: 'input',
                 name: 'appname',
-                message: "What is your app name ?",
+                message: "Name your root component:D ?",
                 default: _.kebabCase(this.appname)
             },
             {
@@ -95,6 +95,8 @@ module.exports = class extends Generator {
 
             this.appname = this._formatAppName(answers.appname);
             this.apptype = answers.apptype;
+            this.config.set('userSelectedAppType',answers.apptype);
+            this.config.save();
 
 
             // this.log(_.camelCase(answers.appname));
@@ -237,7 +239,7 @@ module.exports = class extends Generator {
      * Where installation are run (npm, bower)
      */
     install() {
-        this.installDependencies();
+       // this.installDependencies();
     }
 
     /**
