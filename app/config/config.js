@@ -37,7 +37,7 @@ module.exports = {
                 "destinationPath":"src"
             }
         },
-        dependencies:{
+        "dependencies":{
             packageJSON:{
                 name:'',
                 version:'',
@@ -51,6 +51,20 @@ module.exports = {
             },
             bowerJSON:{},
             yarn:{}
+        },
+        "styles":{
+            "approach":{
+                "css":'css',
+                "sass":"sass",
+                "less":"less"
+            },
+            "framework":{
+                "bootstrap":"bootstrap",
+                "foundation":"foundation",
+                "uxframework":"uxframework"
+            }
+
         }
+
     }
 };

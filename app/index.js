@@ -90,9 +90,58 @@ module.exports = class extends Generator {
                         checked: false
                     }
                 ]
+            },
+            {
+                type: 'rawlist',
+                name: 'styletype',
+                message: 'Select your style approach ?',
+                choices: [
+                    {
+                        name: 'CSS',
+                        value: appConfig.config.styles.approach.css,
+                        checked: true
+                    },
+                    {
+                        name: 'SASS',
+                        value: appConfig.config.styles.approach.sass,
+                        checked: false
+                    },
+                    {
+                        name: 'LESS',
+                        value: appConfig.config.styles.approach.less,
+                        checked: false
+                    }
+                ]
+
+            },
+            {
+                type: 'rawlist',
+                name: 'styleframework',
+                message: 'Select your style framework ?',
+                choices: [
+                    {
+                        name: 'Bootstrap (V3)',
+                        value: appConfig.config.styles.framework.bootstrap,
+                        checked: true
+
+                    },
+                    {
+                        name: 'Foundation',
+                        value: appConfig.config.styles.framework.foundation,
+                        checked: false
+                    },
+                    {
+                        name: 'UX Framework (Pearson)',
+                        value: appConfig.config.styles.framework.uxframework,
+                        checked: false
+                    }
+
+                ]
+
             }
         ]).then((answers)=> {
 
+            console.log(answers);
             this.appname = this._formatAppName(answers.appname);
             this.apptype = answers.apptype;
             this.config.set('userSelectedAppType',answers.apptype);
