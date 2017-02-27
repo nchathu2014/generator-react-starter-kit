@@ -1,1 +1,0 @@
-export const TEST_LOAD_SUCCESS = "TEST_LOAD_SUCCESS";
