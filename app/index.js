@@ -16,6 +16,7 @@ module.exports = class extends Generator {
     constructor(args, opts) {
         super(args, opts);
         this.appname = this._formatAppName(this.appname);
+        this.packageJSON = appConfig.config.dependencies.packageJSON;
 
         //declare the context object
         this.context = {
@@ -43,6 +44,9 @@ module.exports = class extends Generator {
      * 1.Your initialization methods (checking current project state, getting configs, etc)
      */
     initializing() {
+
+
+
         this._showInitMessage();
         this.log(yosay(
             chalk.yellow("Hi...!\n") +
@@ -93,46 +97,22 @@ module.exports = class extends Generator {
             },
             {
                 type: 'rawlist',
-                name: 'styletype',
-                message: 'Select your style approach ?',
-                choices: [
-                    {
-                        name: 'CSS',
-                        value: appConfig.config.styles.approach.css,
-                        checked: true
-                    },
-                    {
-                        name: 'SASS',
-                        value: appConfig.config.styles.approach.sass,
-                        checked: false
-                    },
-                    {
-                        name: 'LESS',
-                        value: appConfig.config.styles.approach.less,
-                        checked: false
-                    }
-                ]
-
-            },
-            {
-                type: 'rawlist',
                 name: 'styleframework',
                 message: 'Select your style framework ?',
                 choices: [
                     {
                         name: 'Bootstrap (V3)',
                         value: appConfig.config.styles.framework.bootstrap,
-                        checked: true
-
-                    },
-                    {
-                        name: 'Foundation',
-                        value: appConfig.config.styles.framework.foundation,
                         checked: false
                     },
                     {
                         name: 'UX Framework (Pearson)',
                         value: appConfig.config.styles.framework.uxframework,
+                        checked: false
+                    },
+                    {
+                        name: 'Other',
+                        value: appConfig.config.styles.framework.other,
                         checked: false
                     }
 
@@ -144,8 +124,11 @@ module.exports = class extends Generator {
             console.log(answers);
             this.appname = this._formatAppName(answers.appname);
             this.apptype = answers.apptype;
+            this.styleframework = answers.styleframework;
+            this.styletype = answers.styletype;
             this.config.set('userSelectedAppType',answers.apptype);
             this.config.save();
+
 
 
             // this.log(_.camelCase(answers.appname));
@@ -159,20 +142,20 @@ module.exports = class extends Generator {
      * (creating .editorconfig files and other metadata files)
      */
     configuring() {
-        var packageJson = appConfig.config.dependencies.packageJSON;
+        //var packageJson = this.packageJSON;
 
-        packageJson.name = _.kebabCase(this.appname);
-        packageJson.version = appConfig.config.appInfo.version;
+        this.packageJSON.name = _.kebabCase(this.appname);
+        this.packageJSON.version = appConfig.config.appInfo.version;
 
         //Select the description message based on the application type
         if (this.apptype === appConfig.config.appType.pureReact) {
-            packageJson.description = appConfig.config.appInfo.descriptionPureReact;
+            this.packageJSON.description = appConfig.config.appInfo.descriptionPureReact;
         }
         if (this.apptype === appConfig.config.appType.reactRedux) {
-            packageJson.description = appConfig.config.appInfo.descriptionReactRedux;
+            this.packageJSON.description = appConfig.config.appInfo.descriptionReactRedux;
         }
 
-        packageJson.scripts = {
+        this.packageJSON.scripts = {
             "prestart": "babel-node tools/startMessage.js",
             "start": "npm-run-all --parallel  test:watch open:src lint:watch",
             "open:src": "babel-node tools/srcServer.js",
@@ -187,25 +170,25 @@ module.exports = class extends Generator {
             "build": "babel-node  tools/build.js",
             "postbuild": "babel-node tools/distServer.js"
         };
-        packageJson.author = appConfig.config.appInfo.author;
-        packageJson.license = appConfig.config.appInfo.license;
+        this.packageJSON.author = appConfig.config.appInfo.author;
+        this.packageJSON.license = appConfig.config.appInfo.license;
 
-        packageJson.dependencies = {
+        this.packageJSON.dependencies = {
             "babel-polyfill": "6.8.0",
             "react": "15.0.2",
-            "react-dom": "15.0.2",
+            "react-dom": "15.0.2"
         };
 
         //Select the dependencies based on the application type (react or react-redux)
         if (this.apptype === appConfig.config.appType.reactRedux) {
-            packageJson.dependencies = Object.assign(
+            this.packageJSON.dependencies = Object.assign(
                 {},
-                packageJson.dependencies,
+                this.packageJSON.dependencies,
                 this.commonDependencies.redux.dependencies
             )
         }
 
-        packageJson.devDependencies = {
+        this.packageJSON.devDependencies = {
             "babel-cli": "6.8.0",
             "babel-core": "6.8.0",
             "babel-loader": "6.2.4",
@@ -220,6 +203,8 @@ module.exports = class extends Generator {
             "compression": "1.6.1",
             "cross-env": "1.0.7",
             "css-loader": "0.23.1",
+            "node-sass": "^3.12.2",
+            "sass-loader": "^4.0.2",
             "enzyme": "2.2.0",
             "eslint": "2.9.0",
             "eslint-plugin-import": "1.6.1",
@@ -246,19 +231,55 @@ module.exports = class extends Generator {
 
         //Select the devDependencies based on the application type (react or react-redux)
         if (this.apptype === appConfig.config.appType.reactRedux) {
-            packageJson.devDependencies = Object.assign(
+            this.packageJSON.devDependencies = Object.assign(
                 {},
-                packageJson.devDependencies,
+                this.packageJSON.devDependencies,
                 this.commonDependencies.redux.devDependencies
             )
         }
 
-        packageJson.repository = {
+        /**
+         * Set style framework to the dependency list
+         */
+        this._setStyleFrameworkDependencies(this.styleframework);
+
+        this.packageJSON.repository = {
             "type": "git",
             "url": "git url goes here"
         };
 
-        this.fs.writeJSON('package.json', packageJson);
+        this.fs.writeJSON('package.json', this.packageJSON);
+    }
+
+
+    /**
+     * Get the user selection style framework Bootstrap,Foundation(Zerb) and UX-Framework(Pearson) and
+     * configure the dependencies align to it
+     * @param framework
+     * @private
+     */
+    _setStyleFrameworkDependencies(framework){
+        switch(framework){
+            case appConfig.config.styles.framework.bootstrap:
+                this.log("********** BOOTSTRAP ***********");
+                this.packageJSON.devDependencies = Object.assign({},this.packageJSON.devDependencies,{
+                    "bootstrap": appConfig.config.appInfo.changeDependencies.styleFramework.bootstrap
+                });
+                break;
+
+            case appConfig.config.styles.framework.uxframework:
+                this.log("********** ux-framework ***********");
+                this.packageJSON.devDependencies = Object.assign({},this.packageJSON.devDependencies,{
+                    "pearson-elements": appConfig.config.appInfo.changeDependencies.styleFramework.pearsonElements
+                });
+                break;
+
+            case appConfig.config.styles.framework.other:
+                this.log("********** Other ***********");
+                break;
+
+            default:break;
+        }
     }
 
     /**
@@ -288,7 +309,7 @@ module.exports = class extends Generator {
      * Where installation are run (npm, bower)
      */
     install() {
-       //this.installDependencies();
+      this.installDependencies();
     }
 
     /**
@@ -335,7 +356,8 @@ module.exports = class extends Generator {
             this.templatePath(appConfig.config.path.reactRedux.templatePath + '/' + reactReduxContext.indexJS),
             this.destinationPath(appConfig.config.path.reactRedux.destinationPath + '/' + reactReduxContext.indexJS),
             {
-                appName: this._formatAppName(this.appname)
+                appName: this._formatAppName(this.appname),
+                styleFramework: this.styleframework
             }
         );
 
@@ -374,9 +396,21 @@ module.exports = class extends Generator {
         );
 
         this.fs.copy(
-            this.templatePath(appConfig.config.path.reactRedux.templatePath + '/' + reactReduxContext.styles),
-            this.destinationPath(appConfig.config.path.reactRedux.destinationPath + '/' + reactReduxContext.styles)
+            this.templatePath(appConfig.config.path.pureReact.templatePath + '/' + reactReduxContext.styles+'/'+'scss'),
+            this.destinationPath(appConfig.config.path.pureReact.destinationPath + '/' + reactReduxContext.styles+'/'+'scss')
         );
+
+        if(this.styleframework === 'uxframework'){
+            this.fs.copy(
+                this.templatePath(appConfig.config.path.pureReact.templatePath + '/' + reactReduxContext.styles+'/'+'main-ux-frmwrk.scss'),
+                this.destinationPath(appConfig.config.path.pureReact.destinationPath + '/' + reactReduxContext.styles+'/'+'main.scss')
+            );
+        }else{
+            this.fs.copy(
+                this.templatePath(appConfig.config.path.pureReact.templatePath + '/' + reactReduxContext.styles+'/'+'main.scss'),
+                this.destinationPath(appConfig.config.path.pureReact.destinationPath + '/' + reactReduxContext.styles+'/'+'main.scss')
+            );
+        }
     }
 
 
@@ -398,7 +432,8 @@ module.exports = class extends Generator {
             this.templatePath(appConfig.config.path.pureReact.templatePath + '/' + pureReactContext.indexJS),
             this.destinationPath(appConfig.config.path.pureReact.destinationPath + '/' + pureReactContext.indexJS),
             {
-                appName: this._formatAppName(this.appname)
+                appName: this._formatAppName(this.appname),
+                styleFramework: this.styleframework
             }
         );
 
@@ -421,9 +456,21 @@ module.exports = class extends Generator {
         );
 
         this.fs.copy(
-            this.templatePath(appConfig.config.path.pureReact.templatePath + '/' + pureReactContext.styles),
-            this.destinationPath(appConfig.config.path.pureReact.destinationPath + '/' + pureReactContext.styles)
+            this.templatePath(appConfig.config.path.pureReact.templatePath + '/' + pureReactContext.styles+'/'+'scss'),
+            this.destinationPath(appConfig.config.path.pureReact.destinationPath + '/' + pureReactContext.styles+'/'+'scss')
         );
+
+        if(this.styleframework === 'uxframework'){
+            this.fs.copy(
+                this.templatePath(appConfig.config.path.pureReact.templatePath + '/' + pureReactContext.styles+'/'+'main-ux-frmwrk.scss'),
+                this.destinationPath(appConfig.config.path.pureReact.destinationPath + '/' + pureReactContext.styles+'/'+'main.scss')
+            );
+        }else{
+            this.fs.copy(
+                this.templatePath(appConfig.config.path.pureReact.templatePath + '/' + pureReactContext.styles+'/'+'main.scss'),
+                this.destinationPath(appConfig.config.path.pureReact.destinationPath + '/' + pureReactContext.styles+'/'+'main.scss')
+            );
+        }
     }
 
     /**

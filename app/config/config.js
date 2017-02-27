@@ -16,7 +16,11 @@ module.exports = {
                         "redux-immutable-state-invariant": "1.2.3",
                         "redux-mock-store": "1.0.2"
                     }
-                }
+                },
+                 "styleFramework":{
+                     "bootstrap": "3.3.6",
+                     "pearsonElements":"1.3.6"
+                 }
              }
         },
         "appType":{
@@ -53,15 +57,10 @@ module.exports = {
             yarn:{}
         },
         "styles":{
-            "approach":{
-                "css":'css',
-                "sass":"sass",
-                "less":"less"
-            },
             "framework":{
                 "bootstrap":"bootstrap",
-                "foundation":"foundation",
-                "uxframework":"uxframework"
+                "uxframework":"uxframework",
+                "other":"other"
             }
 
         }

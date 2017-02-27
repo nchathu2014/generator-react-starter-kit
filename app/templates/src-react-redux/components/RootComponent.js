@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as testActions from './../actions/testActions';
 import logo from './../img/welcome.png';
+import './../styles/main.scss';
 
 class <%=appName%> extends Component {
 

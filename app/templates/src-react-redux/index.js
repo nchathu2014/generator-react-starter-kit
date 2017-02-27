@@ -5,7 +5,8 @@ import {render} from 'react-dom';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import <%=appName%> from './components/<%=appName%>';
-import './styles/styles.css';
+<%if(styleFramework === "bootstrap"){%>import '../node_modules/bootstrap/dist/css/bootstrap.min.css';<%}%>
+<%if(styleFramework === "uxframework"){%>import '../node_modules/pearson-elements/scss/elements.scss';<%}%>
 
 const store = configureStore();
 

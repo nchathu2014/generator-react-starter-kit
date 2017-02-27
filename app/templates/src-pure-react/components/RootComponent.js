@@ -1,9 +1,8 @@
 import React, {PropTypes,Component} from 'react';
 import logo from './../img/welcome.png';
-import './../styles/styles.css';
+import './../styles/main.scss';
 
-class
-<%= appName%> extends Component {
+class <%= appName%> extends Component {
 
 /**
  * RootComponent constructor
