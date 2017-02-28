@@ -32,6 +32,7 @@ export default {
     module: {
         loaders: [
             {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
+            {test: /\.scss$/, loaders: ['style', 'css', 'sass']},
             {test: /(\.css)$/, loader: ExtractTextPlugin.extract("css?sourceMap")},
             {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
             {test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},

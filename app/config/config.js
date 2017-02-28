@@ -28,7 +28,7 @@ module.exports = {
             "reactRedux":"React Redux"
         },
         "messages":{
-            "welcome":"Welcome to ReactJS Starter Kit"
+            "welcome":"ReactJS Starter Kit"
         },
         "version":"v1.0.0",
         "path":{

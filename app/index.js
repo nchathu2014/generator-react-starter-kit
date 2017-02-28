@@ -1,6 +1,5 @@
 /**
  * Created by Nuwan Chathuranga T.D on 2/7/2017.
- * FOLDER EKA MAKALA GAHANA EKE INDAN KARANNA PATAN GANNA
  */
 
 'use strict';
@@ -29,7 +28,7 @@ module.exports = class extends Generator {
             "styles": "styles",
             "indexHTML": "index.html",
             "indexJS": "index.js"
-        }
+        };
 
         this.commonDependencies = {
             "redux": {
@@ -44,8 +43,6 @@ module.exports = class extends Generator {
      * 1.Your initialization methods (checking current project state, getting configs, etc)
      */
     initializing() {
-
-
 
         this._showInitMessage();
         this.log(yosay(
@@ -120,19 +117,12 @@ module.exports = class extends Generator {
 
             }
         ]).then((answers)=> {
-
-            console.log(answers);
             this.appname = this._formatAppName(answers.appname);
             this.apptype = answers.apptype;
             this.styleframework = answers.styleframework;
             this.styletype = answers.styletype;
             this.config.set('userSelectedAppType',answers.apptype);
             this.config.save();
-
-
-
-            // this.log(_.camelCase(answers.appname));
-            //this.log(this.apptype);
         });
 
     }
@@ -197,7 +187,6 @@ module.exports = class extends Generator {
             "babel-preset-react": "6.5.0",
             "babel-preset-react-hmre": "1.1.1",
             "babel-register": "6.8.0",
-            "cheerio": "^0.22.0",
             "jquery": "2.2.3",
             "colors": "1.1.2",
             "compression": "1.6.1",
@@ -261,21 +250,18 @@ module.exports = class extends Generator {
     _setStyleFrameworkDependencies(framework){
         switch(framework){
             case appConfig.config.styles.framework.bootstrap:
-                this.log("********** BOOTSTRAP ***********");
                 this.packageJSON.devDependencies = Object.assign({},this.packageJSON.devDependencies,{
                     "bootstrap": appConfig.config.appInfo.changeDependencies.styleFramework.bootstrap
                 });
                 break;
 
             case appConfig.config.styles.framework.uxframework:
-                this.log("********** ux-framework ***********");
                 this.packageJSON.devDependencies = Object.assign({},this.packageJSON.devDependencies,{
                     "pearson-elements": appConfig.config.appInfo.changeDependencies.styleFramework.pearsonElements
                 });
                 break;
 
             case appConfig.config.styles.framework.other:
-                this.log("********** Other ***********");
                 break;
 
             default:break;
