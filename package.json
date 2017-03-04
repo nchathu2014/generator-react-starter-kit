@@ -16,7 +16,11 @@
   "keywords": [
     "yeoman-generator"
   ],
-  "author": "T.D.Nuwan Chathuranga",
+  "author": {
+    "name": "T.D.Nuwan Chathuranga",
+    "email": "nchathu2014@gmail.com",
+    "url": "https://github.com/nchathu2014"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nchathu2014/generator-react-starter-kit/issues"
