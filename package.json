@@ -1,14 +1,11 @@
 {
   "name": "generator-react-starter-kit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This is a starter kit of react using yeoman generator",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "files": [
-    "generators"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nchathu2014/generator-react-starter-kit.git"
