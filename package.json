@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "generators"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nchathu2014/generator-react-starter-kit.git"
@@ -13,8 +16,8 @@
   "keywords": [
     "yeoman-generator"
   ],
-  "author": "Nuwan Chathuranga T.D",
-  "license": "ISC",
+  "author": "T.D.Nuwan Chathuranga",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nchathu2014/generator-react-starter-kit/issues"
   },
