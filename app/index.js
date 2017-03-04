@@ -295,7 +295,7 @@ module.exports = class extends Generator {
      * Where installation are run (npm, bower)
      */
     install() {
-     // this.installDependencies();
+     this.installDependencies();
     }
 
     /**
@@ -521,7 +521,7 @@ module.exports = class extends Generator {
     _showInitMessage() {
         this.log(chalk.white("==============================================================================================="));
         this.log(chalk.bgWhite("                                                                                               "));
-        this.log(chalk.bgWhite.black('                          ' + appConfig.config.messages.welcome + ' [' + appConfig.config.version + ']' + '                              '));
+        this.log(chalk.bgWhite.black('                          ' + appConfig.config.messages.welcome + ' [' + appConfig.config.version + ']' + '                                         '));
         this.log(chalk.bgWhite("                                                                                               "));
         this.log(chalk.white("==============================================================================================="));
     }
