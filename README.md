@@ -32,7 +32,7 @@ MIT © [Nuwan Chathuranga](https://github.com/nchathu2014)
 
 [npm-image]: https://badge.fury.io/js/generator-react-starter-kit.svg
 [npm-url]: https://npmjs.org/package/generator-react-starter-kit
-[travis-image]: https://travis-ci.org/gfpacheco/generator-react-starter-kit.svg?branch=master
-[travis-url]: https://travis-ci.org/gfpacheco/generator-react-starter-kit
-[daviddm-image]: https://david-dm.org/gfpacheco/generator-react-starter-kit.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/gfpacheco/generator-react-starter-kit
+[travis-image]: https://travis-ci.org/nchathu2014/generator-react-starter-kit.svg?branch=master
+[travis-url]: https://travis-ci.org/nchathu2014/generator-react-starter-kit
+[daviddm-image]: https://david-dm.org/nchathu2014/generator-react-starter-kit.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/nchathu2014/generator-react-starter-kit
