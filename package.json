@@ -1,5 +1,5 @@
 {
-  "name": "yeoman-generator",
+  "name": "generator-react-starter-kit",
   "version": "1.0.1",
   "description": "This is a starter kit og react using yeoman generator",
   "main": "index.js",
@@ -11,6 +11,7 @@
     "url": "git+https://github.com/nchathu2014/generator-react-starter-kit.git"
   },
   "keywords": [
+    "yeoman-generator",
     "React",
     "Redux",
     "Yeoman",
