@@ -4,3 +4,7 @@ $pe-icons-path: '~pearson-elements/assets/fonts/';
 @import 'scss/variables';
 @import 'scss/mixins';
 @import 'scss/colors';
+
+body{
+  text-align: center;
+}

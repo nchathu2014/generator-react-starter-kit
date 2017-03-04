@@ -79,13 +79,36 @@ class <%= appName%> extends Component {
  */
     render() {
     return (
-    <div className="content" style={{textAlign: 'center'}}>
-        <img src={logo} alt=""/>
-        <h1>
-            Welcome to React Starter Kit
-        </h1>
-        <h2>v1.0.0</h2>
-    </div>
+    <%if(styleFramework === "bootstrap"){%>
+        <div className='container-fluid'>
+            <div className="row">
+                <div className="col-lg-12">
+                    <img src={logo} alt=""/>
+                        <h1>
+                            Welcome to React Starter Kit
+                        </h1>
+                        <p>Powered with Bootstratp (V3)</p>
+                </div>
+            </div>
+            </div>
+    <%}else if(styleFramework === "uxframework"){%>
+        <div className="pe-container">
+            <div className="pe-row">
+                <img src={logo} alt=""/>
+                    <h1>
+                    Welcome to React Starter Kit
+                    </h1>
+                    <p>Powered with UX-Framework (Pearson)</p>
+            </div>
+        </div>
+    <%}else{%>
+        <div>
+            <img src={logo} alt=""/>
+            <h1>
+                Welcome to React Starter Kit
+            </h1>
+        </div>
+    <%}%>
     );
 }
 }

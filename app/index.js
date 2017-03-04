@@ -295,7 +295,7 @@ module.exports = class extends Generator {
      * Where installation are run (npm, bower)
      */
     install() {
-      this.installDependencies();
+     // this.installDependencies();
     }
 
     /**
@@ -351,7 +351,8 @@ module.exports = class extends Generator {
             this.templatePath(appConfig.config.path.reactRedux.templatePath + '/' + reactReduxContext.components + '/' + 'RootComponent.js'),
             this.destinationPath(appConfig.config.path.reactRedux.destinationPath + '/' + reactReduxContext.components + '/' + this.appname + '.js'),
             {
-                appName: this.appname
+                appName: this.appname,
+                styleFramework:this.styleframework
             }
         );
 
@@ -427,7 +428,8 @@ module.exports = class extends Generator {
             this.templatePath(appConfig.config.path.pureReact.templatePath + '/' + pureReactContext.components + '/' + 'RootComponent.js'),
             this.destinationPath(appConfig.config.path.pureReact.destinationPath + '/' + pureReactContext.components + '/' + this._formatAppName(this.appname) + '.js'),
             {
-                appName: this._formatAppName(this.appname)
+                appName: this._formatAppName(this.appname),
+                styleFramework:this.styleframework
             }
         );
 
