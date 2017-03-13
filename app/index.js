@@ -39,10 +39,18 @@ module.exports = class extends Generator {
     }
 
 
+
+
+
     /**
      * 1.Your initialization methods (checking current project state, getting configs, etc)
      */
     initializing() {
+
+
+
+
+
 
         this._showInitMessage();
         this.log(yosay(

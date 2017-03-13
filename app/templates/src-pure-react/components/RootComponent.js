@@ -125,5 +125,4 @@ class <%= appName%> extends Component {
  */
 <%= appName%>.defaultProps = {};
 
-export default
-<%= appName%>;
+export default <%= appName%>;
