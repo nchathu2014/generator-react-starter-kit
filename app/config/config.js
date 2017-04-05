@@ -19,7 +19,7 @@ module.exports = {
                 },
                  "styleFramework":{
                      "bootstrap": "3.3.6",
-                     "pearsonElements":"1.3.6"
+                     "pearsonElements":"0.16.0"
                  }
              }
         },

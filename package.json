@@ -1,6 +1,6 @@
 {
   "name": "generator-react-starter-kit",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Yeoman generator for React and Redux starter kit",
   "author": "T.D.Nuwan Chathuranga",
   "files": [
@@ -17,7 +17,7 @@
     "boilerplate"
   ],
   "repository": "https://github.com/nchathu2014/generator-react-starter-kit.git",
-   "scripts": {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -30,5 +30,8 @@
     "yeoman-generator": "^1.1.0",
     "yosay": "^1.2.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "picture-tube": "^1.0.0"
+  }
 }
